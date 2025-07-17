@@ -1,60 +1,88 @@
 {
     "URL Status": "Valid",
     "Meta Tags": {
-        "Title": "jeyamurugarajenthiran",
+        "Title": "Google",
         "Meta Description": "Missing Description",
         "Canonical URL": "Missing Canonical",
         "Open Graph Title": "Missing OG Title"
     },
     "Link Balance": {
-        "Internal Links": 0,
-        "External Links": 0
+        "Internal Links": 17,
+        "External Links": 10
     },
-    "Broken Links Checked": 0,
+    "Broken Links Checked": 27,
     "Broken Links": [],
     "Mobile View": " Mobile screenshot saved as mobile_view.png",
-    "Viewport Meta": "Viewport tag found: width=device-width, initial-scale=1.0",
+    "Viewport Meta": "Missing viewport meta tag",
     "Performance": {
-        "First Byte Time (FCP)": "2492 ms",
-        "DOM Complete Time": "4148 ms",
-        "Total Load Time": "4148 ms"
+        "First Byte Time (FCP)": "926 ms",
+        "DOM Complete Time": "3325 ms",
+        "Total Load Time": "3328 ms"
     },
     "Render Blocking": {
-        "Blocking JS": [
-            "/jeyamuruganrajenthiran/assets/index-BADHgwnF.js"
-        ],
-        "Blocking CSS": [
-            "/jeyamuruganrajenthiran/assets/index-OaCVQR9I.css"
-        ]
+        "Blocking JS": "None",
+        "Blocking CSS": "None"
     },
-    "Unminified Assets": [
-        "https://jeyamuruganr.github.io/jeyamuruganrajenthiran/assets/index-BADHgwnF.js"
-    ],
+    "Unminified Assets": [],
     "Lazy Loading": {
-        "Total Images": 0,
-        "Non-Lazy Images": "All images use lazy loading"
+        "Total Images": 1,
+        "Non-Lazy Images": [
+            "/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png"
+        ]
     },
     "Headings": {
         "Total Headings Found": 0,
         "Headings List": []
     },
     "Indexability": {
-        "robots.txt Present": "Missing",
-        "sitemap.xml Present": "Missing"
+        "robots.txt Present": "Ok",
+        "sitemap.xml Present": "OK"
     },
     "Security Headers": {
         "CSP": "Missing",
-        "X-Frame-Options": "Missing",
-        "X-XSS-Protection": "Missing",
-        "CORS (Access-Control-Allow-Origin)": "*"
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "0",
+        "CORS (Access-Control-Allow-Origin)": "Missing"
     },
-    "Cookies": "No cookies found",
+    "Cookies": [
+        {
+            "Name": "AEC",
+            "Secure": true,
+            "HttpOnly": true
+        },
+        {
+            "Name": "NID",
+            "Secure": false,
+            "HttpOnly": true
+        }
+    ],
     "Mixed Content": "No mixed content found",
     "Redirects": "No redirects found",
     "Large Images": [],
     "Content Structure": {
-        "Total Word Count": 0,
-        "Top 5 Repeated Words": []
+        "Total Word Count": 6,
+        "Top 5 Repeated Words": [
+            [
+                "-",
+                2
+            ],
+            [
+                "©",
+                1
+            ],
+            [
+                "2025",
+                1
+            ],
+            [
+                "Privacy",
+                1
+            ],
+            [
+                "Terms",
+                1
+            ]
+        ]
     },
     "Accessibility": [
         " Accessibility audit failed: [WinError 2] The system cannot find the file specified"
