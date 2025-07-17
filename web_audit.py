@@ -487,7 +487,7 @@ class Web_audit:
             return " Invalid URL"
 
 
-#
+
 
 if __name__ == "__main__":
     web_audit = Web_audit()
