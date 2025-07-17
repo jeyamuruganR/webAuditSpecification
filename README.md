@@ -1,5 +1,3 @@
-EX:O/P
-
 Enter the URL to check: https://jeyamuruganr.github.io/jeyamuruganrajenthiran/
 --------------------------------------
  URL is valid. Fetching HTML content...
@@ -10,6 +8,10 @@ Meta Description: Missing Description
 Canonical URL: Missing Canonical
 Open Graph Title: Missing OG Title
 --------------------------------------
+ Internal vs External Link Balance...
+Internal Links: 0
+External Links: 0
+--------------------------------------
  Checking Broken Links...
 
 Total links found: 0
@@ -19,10 +21,22 @@ Total links checked: 0
  Mobile Friendliness...
  Mobile screenshot saved as mobile_view.png
 --------------------------------------
+ Viewport Meta Tag...
+Viewport tag found: width=device-width, initial-scale=1.0
+--------------------------------------
  Performance Metrics...
-First Byte Time (FCP): 333 ms
-DOM Complete Time: 663 ms
-Total Load Time: 663 ms
+First Byte Time (FCP): 2492 ms
+DOM Complete Time: 4148 ms
+Total Load Time: 4148 ms
+--------------------------------------
+ Render Blocking JS/CSS Check...
+{'Blocking JS': ['/jeyamuruganrajenthiran/assets/index-BADHgwnF.js'], 'Blocking CSS': ['/jeyamuruganrajenthiran/assets/index-OaCVQR9I.css']}
+--------------------------------------
+ Minified JS/CSS Check...
+Unminified file: https://jeyamuruganr.github.io/jeyamuruganrajenthiran/assets/index-BADHgwnF.js
+--------------------------------------
+ Lazy Loading Check...
+{'Total Images': 0, 'Non-Lazy Images': 'All images use lazy loading'}
 --------------------------------------
 Heading Structure...
 --------------------------------------
@@ -38,6 +52,12 @@ CORS (Access-Control-Allow-Origin): *
 --------------------------------------
 Cookie Flags...
 No cookies found
+--------------------------------------
+ Mixed Content Check...
+No mixed content found
+--------------------------------------
+ Redirect Chain Check...
+No redirects found
 --------------------------------------
 Large Image Optimization Check...
  No oversized images found.
