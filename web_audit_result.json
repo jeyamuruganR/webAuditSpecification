@@ -6,13 +6,33 @@
         "Canonical URL": "Missing Canonical",
         "Open Graph Title": "Missing OG Title"
     },
+    "Link Balance": {
+        "Internal Links": 0,
+        "External Links": 0
+    },
     "Broken Links Checked": 0,
     "Broken Links": [],
     "Mobile View": " Mobile screenshot saved as mobile_view.png",
+    "Viewport Meta": "Viewport tag found: width=device-width, initial-scale=1.0",
     "Performance": {
-        "First Byte Time (FCP)": "293 ms",
-        "DOM Complete Time": "563 ms",
-        "Total Load Time": "563 ms"
+        "First Byte Time (FCP)": "2492 ms",
+        "DOM Complete Time": "4148 ms",
+        "Total Load Time": "4148 ms"
+    },
+    "Render Blocking": {
+        "Blocking JS": [
+            "/jeyamuruganrajenthiran/assets/index-BADHgwnF.js"
+        ],
+        "Blocking CSS": [
+            "/jeyamuruganrajenthiran/assets/index-OaCVQR9I.css"
+        ]
+    },
+    "Unminified Assets": [
+        "https://jeyamuruganr.github.io/jeyamuruganrajenthiran/assets/index-BADHgwnF.js"
+    ],
+    "Lazy Loading": {
+        "Total Images": 0,
+        "Non-Lazy Images": "All images use lazy loading"
     },
     "Headings": {
         "Total Headings Found": 0,
@@ -29,6 +49,8 @@
         "CORS (Access-Control-Allow-Origin)": "*"
     },
     "Cookies": "No cookies found",
+    "Mixed Content": "No mixed content found",
+    "Redirects": "No redirects found",
     "Large Images": [],
     "Content Structure": {
         "Total Word Count": 0,

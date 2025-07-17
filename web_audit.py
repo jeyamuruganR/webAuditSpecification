@@ -34,6 +34,7 @@ class Web_audit:
         canonical_tag = soup.find("link", rel="canonical")
         og_title_tag = soup.find("meta", attrs={"property": "og:title"})
 
+
         return {
             "Title": title,
             "Meta Description": description_tag["content"].strip() if description_tag and description_tag.get(
@@ -41,7 +42,31 @@ class Web_audit:
             "Canonical URL": canonical_tag["href"].strip() if canonical_tag and canonical_tag.get(
                 "href") else "Missing Canonical",
             "Open Graph Title": og_title_tag["content"].strip() if og_title_tag and og_title_tag.get(
-                "content") else "Missing OG Title"
+                "content") else "Missing OG Title",
+
+        }
+
+    def check_link_ratio(self, html, base_url):
+        soup = BeautifulSoup(html, 'html.parser')
+        internal = 0
+        external = 0
+        parsed_base = urlparse(base_url).netloc
+
+        for a in soup.find_all('a', href=True):
+            href = a['href']
+            if href.startswith("#") or href.startswith("mailto:") or href.startswith("tel:"):
+                continue  # ignore these special cases
+            full_url = urljoin(base_url, href)
+            parsed_href = urlparse(full_url).netloc
+
+            if parsed_href == parsed_base:
+                internal += 1
+            else:
+                external += 1
+
+        return {
+            "Internal Links": internal,
+            "External Links": external
         }
 
     def find_broken_links(self, html, url):
@@ -76,6 +101,13 @@ class Web_audit:
         except Exception as e:
             return f" Mobile view check failed: {str(e)}"
 
+    def check_viewport_meta(self, html):
+        soup = BeautifulSoup(html, 'html.parser')
+        viewport_tag = soup.find("meta", attrs={"name": "viewport"})
+        if viewport_tag and viewport_tag.get("content"):
+            return f"Viewport tag found: {viewport_tag['content']}"
+        return "Missing viewport meta tag"
+
     def check_performance_metrics(self, url):
         try:
             with sync_playwright() as p:
@@ -96,6 +128,64 @@ class Web_audit:
                 }
         except Exception as e:
             return {"Performance Error": str(e)}
+
+    def check_render_blocking(self, html):
+        soup = BeautifulSoup(html, 'html.parser')
+        blocking_scripts = []
+        blocking_css = []
+
+        for script in soup.find_all("script", src=True):
+            if not script.has_attr("async") and not script.has_attr("defer"):
+                blocking_scripts.append(script["src"])
+
+        for link in soup.find_all("link", rel="stylesheet"):
+            if link.has_attr("href"):
+                blocking_css.append(link["href"])
+
+        return {
+            "Blocking JS": blocking_scripts if blocking_scripts else "None",
+            "Blocking CSS": blocking_css if blocking_css else "None"
+        }
+
+    def check_minified_assets(self, html, base_url):
+        soup = BeautifulSoup(html, 'html.parser')
+        unminified_files = []
+
+        links = soup.find_all(['script', 'link'])
+
+        for tag in links:
+            if tag.name == 'script' and tag.get('src'):
+                url = urljoin(base_url, tag['src'])
+            elif tag.name == 'link' and tag.get('rel') == ['stylesheet'] and tag.get('href'):
+                url = urljoin(base_url, tag['href'])
+            else:
+                continue
+
+            if ".min." in url:
+                continue  # already minified
+            try:
+                res = requests.get(url, timeout=5)
+                if res.status_code == 200 and res.text.count("\n") > 50:
+                    unminified_files.append(url)
+            except:
+                continue
+
+        return unminified_files
+
+    def check_lazy_loading(self, html):
+        soup = BeautifulSoup(html, 'html.parser')
+        images = soup.find_all("img")
+        non_lazy_images = []
+
+        for img in images:
+            if not img.has_attr("loading") or img["loading"] != "lazy":
+                src = img.get("src", "unknown")
+                non_lazy_images.append(src)
+
+        return {
+            "Total Images": len(images),
+            "Non-Lazy Images": non_lazy_images if non_lazy_images else "All images use lazy loading"
+        }
 
     def check_security_headers(self, url):
         try:
@@ -146,6 +236,43 @@ class Web_audit:
             return result if result else "No cookies found"
         except Exception as e:
             return {"Cookie Check Error": str(e)}
+
+    def check_mixed_content(self, html, base_url):
+        soup = BeautifulSoup(html, 'html.parser')
+        mixed_content = []
+
+        tags_attrs = {
+            "img": "src",
+            "script": "src",
+            "link": "href",
+            "iframe": "src",
+            "video": "src",
+            "audio": "src",
+            "source": "src"
+        }
+
+        for tag, attr in tags_attrs.items():
+            for element in soup.find_all(tag):
+                src = element.get(attr)
+                if src and src.startswith("http://"):
+                    full_url = urljoin(base_url, src)
+                    mixed_content.append(full_url)
+
+        return mixed_content if mixed_content else "No mixed content found"
+
+    def check_redirect_chain(self, url):
+        try:
+            response = requests.get(url, allow_redirects=True)
+            chain = [resp.url for resp in response.history] + [response.url]
+            if len(chain) > 1:
+                return {
+                    "Redirect Chain Count": len(chain) - 1,
+                    "Redirect Chain": chain
+                }
+            else:
+                return "No redirects found"
+        except Exception as e:
+            return {"Redirect Error": str(e)}
 
     def check_large_images(self, html, base_url):
         soup = BeautifulSoup(html, 'html.parser')
@@ -216,6 +343,13 @@ class Web_audit:
                 print(f"{k}: {v}")
 
             print("--------------------------------------")
+            print(" Internal vs External Link Balance...")
+            link_balance = self.check_link_ratio(html, url)
+            audit_result["Link Balance"] = link_balance
+            for k, v in link_balance.items():
+                print(f"{k}: {v}")
+
+            print("--------------------------------------")
             print(" Checking Broken Links...")
             broken_links, total_checked = self.find_broken_links(html, url)
             audit_result["Broken Links Checked"] = total_checked
@@ -233,12 +367,40 @@ class Web_audit:
             audit_result["Mobile View"] = mobile_result
             print(mobile_result)
 
+            viewport_check = self.check_viewport_meta(html)
+            audit_result["Viewport Meta"] = viewport_check
+            print("--------------------------------------")
+            print(" Viewport Meta Tag...")
+            print(viewport_check)
+
             print("--------------------------------------")
             print(" Performance Metrics...")
             perf = self.check_performance_metrics(url)
             audit_result["Performance"] = perf
             for k, v in perf.items():
                 print(f"{k}: {v}")
+
+            print("--------------------------------------")
+            print(" Render Blocking JS/CSS Check...")
+            render_blocking = self.check_render_blocking(html)
+            audit_result["Render Blocking"] = render_blocking
+            print(render_blocking)
+
+            print("--------------------------------------")
+            print(" Minified JS/CSS Check...")
+            unminified = self.check_minified_assets(html, url)
+            audit_result["Unminified Assets"] = unminified
+            if unminified:
+                for asset in unminified:
+                    print(f"Unminified file: {asset}")
+            else:
+                print(" All JS/CSS are minified")
+
+            print("--------------------------------------")
+            print(" Lazy Loading Check...")
+            lazy_result = self.check_lazy_loading(html)
+            audit_result["Lazy Loading"] = lazy_result
+            print(lazy_result)
 
             print("--------------------------------------")
             print("Heading Structure...")
@@ -270,6 +432,22 @@ class Web_audit:
                     print(f"{c['Name']} - Secure: {c['Secure']} | HttpOnly: {c['HttpOnly']}")
             else:
                 print(cookies)
+
+            print("--------------------------------------")
+            print(" Mixed Content Check...")
+            mixed = self.check_mixed_content(html, url)
+            audit_result["Mixed Content"] = mixed
+            if isinstance(mixed, list):
+                for item in mixed:
+                    print(f"Mixed content: {item}")
+            else:
+                print(mixed)
+
+            print("--------------------------------------")
+            print(" Redirect Chain Check...")
+            redirects = self.check_redirect_chain(url)
+            audit_result["Redirects"] = redirects
+            print(redirects)
 
             print("--------------------------------------")
             print("Large Image Optimization Check...")
