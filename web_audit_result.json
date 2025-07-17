@@ -1,0 +1,40 @@
+{
+    "URL Status": "Valid",
+    "Meta Tags": {
+        "Title": "jeyamurugarajenthiran",
+        "Meta Description": "Missing Description",
+        "Canonical URL": "Missing Canonical",
+        "Open Graph Title": "Missing OG Title"
+    },
+    "Broken Links Checked": 0,
+    "Broken Links": [],
+    "Mobile View": " Mobile screenshot saved as mobile_view.png",
+    "Performance": {
+        "First Byte Time (FCP)": "293 ms",
+        "DOM Complete Time": "563 ms",
+        "Total Load Time": "563 ms"
+    },
+    "Headings": {
+        "Total Headings Found": 0,
+        "Headings List": []
+    },
+    "Indexability": {
+        "robots.txt Present": "Missing",
+        "sitemap.xml Present": "Missing"
+    },
+    "Security Headers": {
+        "CSP": "Missing",
+        "X-Frame-Options": "Missing",
+        "X-XSS-Protection": "Missing",
+        "CORS (Access-Control-Allow-Origin)": "*"
+    },
+    "Cookies": "No cookies found",
+    "Large Images": [],
+    "Content Structure": {
+        "Total Word Count": 0,
+        "Top 5 Repeated Words": []
+    },
+    "Accessibility": [
+        " Accessibility audit failed: [WinError 2] The system cannot find the file specified"
+    ]
+}
