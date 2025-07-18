@@ -162,7 +162,7 @@ class Web_audit:
                 continue
 
             if ".min." in url:
-                continue  # already minified
+                continue
             try:
                 res = requests.get(url, timeout=5)
                 if res.status_code == 200 and res.text.count("\n") > 50:
