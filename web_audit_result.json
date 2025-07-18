@@ -10,7 +10,7 @@
         "Internal Links": 360,
         "External Links": 3
     },
-    "Broken Links Checked": 364,
+    "Broken Links Checked": 365,
     "Broken Links": [
         [
             "https://www.flipkart.com/brands",
@@ -21,16 +21,16 @@
             500
         ],
         [
-            "https://www.flipkart.com/q/one-pieces?otracker=undefined_footer",
-            "No response"
+            "https://www.flipkart.com/womens-kurtas-kurtis/pr?sid=clo,cfv,cib,rkt&otracker=undefined_footer",
+            429
         ]
     ],
-    "Mobile View": " Mobile view check failed: Page.goto: SSL peer certificate or SSH remote key was not OK\nCall log:\n  - navigating to \"https://www.flipkart.com/\", waiting until \"load\"\n",
+    "Mobile View": "Mobile screenshot saved as mobile_view.png",
     "Viewport Meta": "Viewport tag found: width=device-width,minimum-scale=1,user-scalable=no",
     "Performance": {
-        "First Byte Time (FCP)": "982 ms",
-        "DOM Complete Time": "7242 ms",
-        "Total Load Time": "7256 ms"
+        "First Byte Time (FCP)": "732 ms",
+        "DOM Complete Time": "3915 ms",
+        "Total Load Time": "3926 ms"
     },
     "Render Blocking": {
         "Blocking JS": "None",
@@ -144,7 +144,7 @@
         "sitemap.xml Present": "Missing"
     },
     "Security Headers": {
-        "CSP": "default-src 'self' https://*.flipkart.com https://*.flixcart.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.flixcart.com https://js-agent.newrelic.com https://bam.nr-data.net https://dpm.demdex.net https://flipkart.d1.sc.omtrdc.net https://www.youtube.com https://s.ytimg.com http://dpm.demdex.net https://smartplugin.youbora.com https://a-fds.youborafds01.com https://www.googletagmanager.com https://maps.googleapis.com blob: 'nonce-10761599007517611019'; style-src 'self' 'unsafe-inline' https://*.flixcart.com; img-src 'self' * data: blob:; media-src 'self' https://*.flixcart.com data: blob: *; font-src 'self' https://*.flixcart.com data:; frame-src 'self' https://*.flipkart.com http://*.flipkart.com https://www.youtube.com https://cdemux.appspot.com blob: fknative://* https://*.flixcart.com https://*.surepass.io; worker-src 'self' https://*.flipkart.com blob:; connect-src 'self' *; base-uri 'self'",
+        "CSP": "default-src 'self' https://*.flipkart.com https://*.flixcart.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.flixcart.com https://js-agent.newrelic.com https://bam.nr-data.net https://dpm.demdex.net https://flipkart.d1.sc.omtrdc.net https://www.youtube.com https://s.ytimg.com http://dpm.demdex.net https://smartplugin.youbora.com https://a-fds.youborafds01.com https://www.googletagmanager.com https://maps.googleapis.com blob: 'nonce-10985420664197460560'; style-src 'self' 'unsafe-inline' https://*.flixcart.com; img-src 'self' * data: blob:; media-src 'self' https://*.flixcart.com data: blob: *; font-src 'self' https://*.flixcart.com data:; frame-src 'self' https://*.flipkart.com http://*.flipkart.com https://www.youtube.com https://cdemux.appspot.com blob: fknative://* https://*.flixcart.com https://*.surepass.io; worker-src 'self' https://*.flipkart.com blob:; connect-src 'self' *; base-uri 'self'",
         "X-Frame-Options": "Missing",
         "X-XSS-Protection": "Missing",
         "CORS (Access-Control-Allow-Origin)": "Missing"

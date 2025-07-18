@@ -93,13 +93,18 @@ class Web_audit:
             with sync_playwright() as p:
                 iphone = p.devices["iPhone 12"]
                 browser = p.webkit.launch()
-                page = browser.new_page(**iphone)
+
+
+                context = browser.new_context(**iphone, ignore_https_errors=True)
+                page = context.new_page()
+
                 page.goto(url, timeout=10000)
                 page.screenshot(path="mobile_view.png")
+
                 browser.close()
-                return " Mobile screenshot saved as mobile_view.png"
+                return "Mobile screenshot saved as mobile_view.png"
         except Exception as e:
-            return f" Mobile view check failed: {str(e)}"
+            return f"Mobile view check failed: {str(e)}"
 
     def check_viewport_meta(self, html):
         soup = BeautifulSoup(html, 'html.parser')
