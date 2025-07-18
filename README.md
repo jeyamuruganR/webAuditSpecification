@@ -13,6 +13,7 @@ It generates a **detailed JSON report (`web_audit_result.json`)** and optionally
 ------------------------------
 
 -----How to Run------.
+
  #Run via CLI:
  
    -python `web_audit.py` https://example.com
