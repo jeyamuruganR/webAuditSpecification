@@ -12,11 +12,11 @@ It generates a **detailed JSON report (`web_audit_result.json`)** and optionally
 
 ------------------------------
 
------How to Run------
- #Run via CLI
+-----How to Run------.
+ #Run via CLI:
    -python `web_audit.py` https://example.com
 
-#If no argument passed
+#If no argument passed:
   -python `web_audit.py`
 
 
