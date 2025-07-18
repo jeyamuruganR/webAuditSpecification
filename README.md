@@ -54,15 +54,15 @@ Broken Links- `find_broken_links()`
     
 Mobile View Screenshot `check_mobile_view()`   
 
-   - Captures mobile screenshot using Playwright (iPhone 12)
+    - Captures mobile screenshot using Playwright (iPhone 12)
 
 Viewport Meta Tag -`check_viewport_meta()`        
 
-   - Checks for mobile responsive viewport tag     
+    - Checks for mobile responsive viewport tag     
 
 Performance Metrics -`check_performance_metrics()`   
 
-   - Measures page load timings (FCP, DOM, Load event)  
+    - Measures page load timings (FCP, DOM, Load event)  
 
 
   Render Blocking JS/CSS - `check_render_blocking()` 
@@ -115,4 +115,4 @@ Large Images - `check_large_images()`
 
 Content Analysis - `check_content_structure()`     
 
-  - Analyzes word count and most frequent words    
+    - Analyzes word count and most frequent words    
