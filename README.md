@@ -14,10 +14,10 @@ It generates a **detailed JSON report (`web_audit_result.json`)** and optionally
 
 -----How to Run------
  #Run via CLI
-   python `web_audit.py` https://example.com
+   -python `web_audit.py` https://example.com
 
 #If no argument passed
-  python `web_audit.py`
+  -python `web_audit.py`
 
 
 ----Requirements---
@@ -30,7 +30,7 @@ Python 3.7+
 - Node.js (axe install)
 
 
-# ---Design Overview (Design structure)----
+# ---Design Overview (Design structure)----.
 
  
  Main driver - `check_url(url)`
