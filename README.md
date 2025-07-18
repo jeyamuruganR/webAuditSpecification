@@ -34,7 +34,7 @@ Python 3.7+
 
 
 
-## Compilation / Setup (Once Before Running)
+## Compilation 
  Clone or download the project
 
 Install Python packages: 
