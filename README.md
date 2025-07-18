@@ -33,6 +33,25 @@ Python 3.7+
 - Node.js (axe install)
 
 
+
+## Compilation / Setup (Once Before Running)
+ Clone or download the project
+
+Install Python packages: 
+pip install  -Playwright (browser automation)  
+- BeautifulSoup4 (HTML parsing)  
+- requests (HTTP requests)  
+- axe-core CLI (for accessibility)  
+- Node.js (axe install)
+
+ Run playwright install
+
+ Install axe-core CLI via npm
+
+(Optional) Set up virtual environment (recommended)
+
+
+
 # ---Design Overview (Design structure)----.
 
  
