@@ -38,11 +38,11 @@ Python 3.7+
  Clone or download the project
 
 Install Python packages: 
-pip install  -Playwright (browser automation)  
-- BeautifulSoup4 (HTML parsing)  
-- requests (HTTP requests)  
-- axe-core CLI (for accessibility)  
-- Node.js (axe install)
+pip install  -Playwright 
+- BeautifulSoup4
+- requests 
+- axe-core CLI  
+  
 
  Run playwright install
 
